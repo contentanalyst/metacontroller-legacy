@@ -6,7 +6,9 @@ COPY . /go/src/metacontroller.app/
 WORKDIR /go/src/metacontroller.app/
 RUN go install
 
-FROM debian:stretch-slim
+FROM ubuntu:16.04
 RUN apt-get update && apt-get install --no-install-recommends -y ca-certificates && rm -rf /var/lib/apt/lists/*
 COPY --from=build /go/bin/metacontroller.app /usr/bin/metacontroller
+RUN chown daemon:daemon /usr/bin/metacontroller
+USER daemon
 CMD ["/usr/bin/metacontroller"]
