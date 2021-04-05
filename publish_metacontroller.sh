@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-version=0.3.1-ALPINE-21030
+version=0.3.1-ALPINE-21040
 
 while getopts n: option
 do
